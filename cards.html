@@ -65,6 +65,36 @@
             ]
         };
 
+        //More than 1 artists:
+        const artists = [
+            {
+                name: "Claude Monet",
+                portfolio: [
+                    {
+                    title: "Water Lillies",
+                    url: "https://cdn.britannica.com/97/223397-138-590D7D0D/did-you-know-60-seconds-Claude-Monet.jpg?w=800&h=450&c=crop"
+                    },
+                    {
+                        title: "Garden at Sainte-Adresse",
+                        url: "https://m.media-amazon.com/images/I/715HYhkpg1L._AC_UF894,1000_QL80_.jpg"
+                    }
+                ]
+            },
+            {
+                name: "Yang Yong Liang",
+                portfolio: [
+                    {
+                        title: "Tavelers among Mountains and Streams",
+                        url: "https://images.squarespace-cdn.com/content/v1/5bb3be9de4afe91f8a50e3b2/1538591009430-0ZPT99DG6TFHLGWO9OXO/001.jpg?format=1000w"
+                    },
+                    {
+                        title: "Early Spring",
+                        url: "https://images.squarespace-cdn.com/content/v1/5bb3be9de4afe91f8a50e3b2/1603135487802-H3773586M7O9YXZZ5KDV/2019+Early+spring+3+%E6%97%A9%E6%98%A5%E5%9B%BE+.jpg?format=1000w"
+                    }
+                ]
+            },
+        ];
+
         function addArtist(name, portfolio) {
             const template =
                 document.getElementById("card-template").content.cloneNode(true);
@@ -84,6 +114,9 @@
         };
 
         addArtist(artist.name, artist.portfolio);
+
+        //More than 1 artist
+        artists.forEach(artist => addArtist(artist.name, artist.portfolio))
     </script>
 </body>
 </html>
