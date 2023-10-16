@@ -59,21 +59,23 @@
                 { id: 3, title: 'Tornado Warning', content: "Residents should prepare..." }
             ];
 
-            function publishNewsArticle(title,content) {
-                let newsTemplate = document.getElementById('news-templates').innerText = '';
+            function publishNews() {
+                document.getElementById('news-templates').innerText = '';
 
-                news.forEach( item => {
+                news.forEach( item => addNewsArticle(item) )
+                
+                function addNewsArticle(news){
                     const itemTemplate = document.getElementById('news-template').content.cloneNode(true);
 
-                    itemTemplate.querySelector('.news-title').innerText = item.title;
-                    itemTemplate.querySelector('.news-content').innerText = item.content;
+                    itemTemplate.querySelector('.news-title').innerText = news.title;
+                    itemTemplate.querySelector('.news-content').innerText = news.content;
 
                 document.querySelector('#news-templates').appendChild(itemTemplate);
-                });
-            }
+                }
+            };
             
-            publishNewsArticle(news.title, news.content)
-            setInterval(publishNewsArticle(news.title, news.content), 5000);
+            publishNews()
+            setInterval(publishNews, 5000);
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
