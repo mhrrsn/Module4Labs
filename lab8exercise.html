@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 8 Exercise</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data-10-year-range.min.js"></script>
+
+
+</head>
+<body>
+    
+</body>
+    <div class="container">
+        <h2>Number of Days Since My Birth Date!</h2>
+        <div id="numSinceBdate"></div>
+
+        <h2>Number of Years / Months / Days Since My Birth Date!</h2>
+        <div id="numBreakdownSinceBdate"></div>
+
+        <h2>Closest Date to Current Date</h2>
+        <div id="date1"></div>
+        <div id="date2"></div>
+        <div id="closestDate"></div>
+
+        <h2>Is the first date before or after the second date?</h2>
+        <div id=dateA></div>
+        <div id=dateB></div>
+        <div id="isBeforeOrAfter"></div>
+
+        <h2>London Time:</h2>
+        <div id="londonTime"></div>
+
+    </div>
+
+    <script type="text/javascript">
+        //1. Calculate the number of days between your birthdate and the current date
+        const birthDate = moment(1997-12-24);
+        const currentDate = moment();
+        const numSinceBdate = currentDate.diff(birthDate, 'days');
+
+        document.getElementById("numSinceBdate").innerHTML = numSinceBdate + " days passed since my birth date...."
+
+        //2. Display the number of years, months, and days between your birthdate and current date
+        const years = Math.floor(numSinceBdate / 365);
+        const months = Math.floor((numSinceBdate % 365) / 30);
+        const days = Math.floor((numSinceBdate % 365) % 30);
+
+        document.getElementById("numBreakdownSinceBdate").innerHTML = years + " years, " + months + " months, and " + days + " days passed since my birth date...."
+
+        //3. Given two dates, display the date closest to the current date
+        const date1 = moment('2022-01-15').add(Math.floor(Math.random() * 365), 'days');
+        const date2 = moment('2023-01-15').add(Math.floor(Math.random() * 365), 'days');
+
+        const closestDate = currentDate.diff(date1) < currentDate.diff(date2) ? date1 : date2;
+        document.getElementById("date1").innerHTML = date1.format('dddd, YYYY-MM-DD');
+        document.getElementById("date2").innerHTML = date2.format('dddd, YYYY-MM-DD');
+        document.getElementById("closestDate").innerHTML = "The Closest Date to Today is " + closestDate.format('dddd, YYYY-MM-DD');
+
+         // 4. Given two dates, display whether the first date is before or after the second date
+        const dateA = moment('2023-01-15');
+        const dateB = moment('2023-02-20');
+        const isBeforeOrAfter = dateA.isBefore(dateB);
+
+        document.getElementById("dateA").innerHTML = dateA;
+        document.getElementById("dateB").innerHTML = dateB;
+        document.getElementById("isBeforeOrAfter").innerHTML = `Is Date A before Date B?: ${isBeforeOrAfter ? 'Yes' : 'No'}`;
+
+        //5. Display the current time in London
+        const londonTime = moment().tz('Europe/London');
+
+        document.getElementById("londonTime").innerHTML = londonTime;
+    </script>
+</html>
